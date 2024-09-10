@@ -3,19 +3,29 @@ import { Injectable } from '@angular/core';
 import { Signup, Login } from '../interfaces/auth';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private _HttpClient: HttpClient) { }
+  constructor(private _HttpClient: HttpClient ,private _Router: Router) { }
   currentUser = new BehaviorSubject(null);
   authPhoto: string = 'images/welcome.jpg'
 
   saveCurrentUser() {
     const token: any = localStorage.getItem('user');
     this.currentUser.next(jwtDecode(token));
+  }
+
+  checkToken() {
+    const token: any = localStorage.getItem('user');
+    const decodedToken = jwtDecode(token);
+    if (decodedToken.exp! < Date.now() / 1000) {
+      this.logout()
+      this._Router.navigate(['/login'])
+    }
   }
 
   singUp(formData: Signup): Observable<any> {
