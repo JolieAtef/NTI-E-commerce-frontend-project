@@ -1,0 +1,62 @@
+
+nav{
+    background-color: rgba(66, 3, 3, 0.938);
+    position: fixed;
+    top:0;
+    width: 100%;
+    z-index: 20;
+}
+.navbar-brand{
+    color: rgba(238, 233, 219, 0.753);
+    font-size: 1.5em;
+}
+.nav-link{
+    color: rgba(238, 233, 219, 0.861);
+    font-size: 1.3em;
+}
+.nav-link:hover{
+    color: rgba(238, 233, 219, 0.495) ;
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+
+button{
+    background-color: rgba(66, 3, 3, 0.938);
+    border-color: rgba(238, 233, 219, 0.753);
+    color:rgba(238, 233, 219, 0.753);
+    border-radius: 15px;
+    margin: 10px;
+    width: 150px;
+    
+}
+button:hover{
+    background-color:rgba(238, 233, 219, 0.753); 
+    color:rgb(66, 3, 3);
+
+}
+.login-nav li ul{
+    display: flex;
+    gap:1em;
+    font-size: 1.3em;
+    
+}  
+.login-nav li ul li{
+    justify-content: center;
+    align-content: center;
+}
+.login-nav li ul a{
+    color: rgba(238, 233, 219, 0.861);
+    
+}
+.login-nav li ul a:hover{
+    color: rgba(238, 233, 219, 0.495) ;
+}
+.icons{
+    display: flex;
+    flex-direction: row-reverse;
+    gap:0.4em;
+}

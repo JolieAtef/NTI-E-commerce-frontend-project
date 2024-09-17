@@ -1,14 +1,17 @@
-.productdetailsParent{
+.profileParent{
     background-color:rgba(238, 233, 219, 0.753); 
-    padding: 0 60px;
-    padding-bottom: 30px;
     padding-top: 110px;
+    padding-bottom:50px;
+}
+.user-img{
     
+    width: 40vh;
 }
-img{
-    border-radius: 10px;
-    width: 90%;
+.user-img img{
+     width: 100%;
+     border-radius: 10px;
 }
+
 .button{
     background-color: rgba(66, 3, 3, 0.938);
     border-color:rgba(66, 3, 3, 0.938) ;
@@ -22,3 +25,4 @@ img{
     color:rgb(66, 3, 3);
 
 }
+

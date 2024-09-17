@@ -1,34 +1,38 @@
-<div class="reviewParent">
-<div class="container">
-    <h2 class="text-center my-5">My Reviews</h2>
+<div class="orderParent">
+    <h2 class="text-center my-5">My Orders</h2>
     <hr class="my-3">
     <table class="w-100">
       <thead>
         <tr class="border-bottom">
-          <th>product</th>
-          <th>Review</th>
-          <th>Rating</th>
-          <th></th>
+          <th>products</th>
+          <th>Delivered</th>
+          <th>Paid</th>
+          <th>Payment Method</th>
+          <th>Total Price</th>
         </tr>
       </thead>
       <tbody>
-        @for(review of reviews; track review._id){
+        @for(order of orders; track order._id){
         <tr class="m-5 border-bottom">
-          <td><img class="mx-3" width="50px" [src]="review?.product?.cover"
-              [alt]="review?.product?.name">{{review?.product?.name}}</td>
-          <td>{{review?.comment}}</td>
-          <td>{{review?.rating}}</td>
           <td>
-            <a class="btn button btn-sm rounded-3 mx-3">Update</a>
-            <button (click)="deleteReview(review._id)" class="button btn-sm rounded-3">Delete</button>
+            @for(item of order.cartItems; track item._id){
+            <img class="mx-3" width="50px" [src]="item?.product?.cover"
+              [alt]="item?.product?.name">{{item?.product?.name}} | Quantity {{item.quantity}}
+            <br>
+            <br>
+            }
           </td>
+          <td>@if(order.isDelivered){yes}@else{No}</td>
+          <td>@if(order.isPaid){yes}@else{No}</td>
+          <td>{{order.paymentMethod}}</td>
+          <td>{{order.totalPrice|currency}}</td>
         </tr>
         }
       </tbody>
     </table>
-  </div>
   
-  <div class="container m-auto mt-5 w-25">
+  
+  <div class="container w-25">
     <ul class="pagination">
       @if(pagination.prev){<li (click)="changePage(pagination.prev)" class="page-item"><button
           class="page-link">Previous</button></li>}

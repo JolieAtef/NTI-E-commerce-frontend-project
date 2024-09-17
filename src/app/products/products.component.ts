@@ -1,6 +1,6 @@
 import { Component , OnInit } from '@angular/core';
 import { ProductsService } from '../services/products.service';
-import { CurrencyPipe } from '@angular/common';
+import { CommonModule,CurrencyPipe  } from '@angular/common';
 import { DescriptionPipe } from '../pipes/description.pipe';
 import { Pagination } from '../interfaces/pagination';
 import { RouterLink } from '@angular/router';
@@ -10,7 +10,7 @@ import { CartService } from '../services/cart.service';
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CurrencyPipe, DescriptionPipe, RouterLink],
+  imports: [CommonModule, DescriptionPipe, RouterLink],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })

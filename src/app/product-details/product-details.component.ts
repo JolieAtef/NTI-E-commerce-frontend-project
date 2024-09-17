@@ -18,6 +18,7 @@ import { ReviewsService } from '../services/reviews.service';
 })
 export class ProductDetailsComponent implements OnInit, OnDestroy {
   subscription: any;
+  reviews:any=[]
   id: string = '';
   imgDomain: string = '';
   product: any = {};
@@ -35,6 +36,12 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
         this.product = res.data
       })
     }
+
+    getproductReviews(){
+       this._ReviewsService.getproductReviews(this.id).subscribe((res) => {
+        this.reviews = res.data
+      })
+    }
   
     addToWishlist(productId: string) {
       this._WishlistService.addProductToWishlist(productId).subscribe((res) => { alert('Product Added to wishlist') })
@@ -49,6 +56,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
         next: (res) => {
           this.loadProduct();
           alert('Review Added')
+          this.getproductReviews()
         },
         error: (err) => {
           if (err.error.errors) {
@@ -67,6 +75,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
       this.id = this._ActivatedRoute.snapshot.params['id']
       this.imgDomain = this._ProductsService.productImages;
       this.loadProduct()
+      this.getproductReviews()
     }
   
     ngOnDestroy(): void { this.subscription.unsubscribe(); } 
